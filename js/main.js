@@ -6,6 +6,8 @@ import { gsap } from "gsap";
 
 import { addStars } from "./stars";
 
+import "../index.css"
+
 // Constants
 const START_STR = "CTRL HACKS '23";
 const LETTER_OFFSET = 9, START_OFFSET = 70;
@@ -13,6 +15,10 @@ const LETTER_OFFSET = 9, START_OFFSET = 70;
 const DRAW_ANIM_DURATION = 1.5;
 const SCALE_ANIM_DURATION = 1.5;
 
+const PASSIVE_ORBIT_MAX_THETA_X = 20 * (Math.PI / 180);
+const PASSIVE_ORBIT_MAX_THETA_Y = 10 * (Math.PI / 180);
+
+const mapRange = (value, fromMin, fromMax, toMin, toMax) => (value - fromMin) * (toMax - toMin) / (fromMax - fromMin) + toMin;
 
 function main() {
 	const canvas = document.querySelector("#c");
@@ -25,12 +31,10 @@ function main() {
 	scene.background = 0x000000;
     const controls = new OrbitControls( camera, renderer.domElement );
     controls.target = new THREE.Vector3(0, 10, 0);
-    controls.autoRotate = true;
-    controls.autoRotateSpeed = -0.5;
-    controls.enableDamping = true;
-    
+
     controls.enableZoom = false;
     controls.enablePan = false;
+    controls.enableRotate = false;
 
     const objects = [];
 
@@ -123,12 +127,12 @@ function main() {
 	}
 
     // Start Animations
-
     let initStarted = false;
     const initAnimation = () => {
 
         const tl = gsap.timeline();
 
+        // Initial Draw-in
         tl.to(camera.position, { duration: 3, x: 20, y: 70, z: 80, ease: "power1"})
         objects.forEach(({ obj, edgeCount }, ndx) => {
             tl.to(obj.material.uniforms.time, { duration: DRAW_ANIM_DURATION, value: edgeCount }, 0)
@@ -138,6 +142,18 @@ function main() {
         tl.addLabel("step2");
         tl.to(camera.position, { duration: 1, x: 20, y: -20, z: 140, ease: "power4"}, "step2")
         tl.to(controls.target, { duration: 1, x: 0, y: -20, z: 0, ease: "power4"}, "step2")
+
+        tl.to("nav, .hero", {opacity: 1, duration: 0.2});
+
+        // Passive Orbit Handler
+        document.addEventListener("mousemove", e => {
+            const windowWidthHalf = window.innerWidth / 2;
+            const x = e.clientX - windowWidthHalf;
+
+            const thetaX = mapRange(x, -windowWidthHalf, windowWidthHalf, -PASSIVE_ORBIT_MAX_THETA_X, PASSIVE_ORBIT_MAX_THETA_X) + Math.PI / 2;
+            camera.position.set(141.4 * Math.cos(thetaX), -20, 141.41 * Math.sin(thetaX));
+        });
+
     }
 
 	function render(time) { // Animate Loop
