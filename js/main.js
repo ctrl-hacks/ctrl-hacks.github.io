@@ -5,7 +5,6 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { gsap } from "gsap";
 
 import { addStars } from "./stars";
-
 import "../index.css"
 
 // Constants
@@ -42,7 +41,8 @@ function main() {
 
     START_STR.split('').forEach((letter, index) => {
         const loader = new FontLoader();
-        loader.load('fonts/Space-Grotesk-Bold.json', (font) => {
+        const fontPath = import.meta.env.PROD ? '../fonts/Space-Grotesk-Bold.json' : '../public/fonts/Space-Grotesk-Bold.json';
+        loader.load(fontPath, (font) => {
             const textGeom = new TextGeometry(letter, {
                 font: font,
                 size: 10,
