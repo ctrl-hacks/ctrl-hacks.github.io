@@ -9,7 +9,7 @@ import "../index.css"
 
 // Constants
 const START_STR = "CTRL HACKS '23";
-const LETTER_OFFSET = 9, START_OFFSET = 70;
+const LETTER_OFFSET = 9, START_OFFSET = 63;
 
 const DRAW_ANIM_DURATION = 1.5;
 const SCALE_ANIM_DURATION = 1.5;
@@ -41,7 +41,7 @@ function main() {
 
     START_STR.split('').forEach((letter, index) => {
         const loader = new FontLoader();
-        const fontPath = import.meta.env.PROD ? '../fonts/Space-Grotesk-Bold.json' : '../public/fonts/Space-Grotesk-Bold.json';
+        const fontPath = import.meta.env.PROD ? '../fonts/Space-Grotesk-Bold.json' : '/fonts/Space-Grotesk-Bold.json';
         loader.load(fontPath, (font) => {
             const textGeom = new TextGeometry(letter, {
                 font: font,
@@ -140,7 +140,7 @@ function main() {
         });
 
         tl.addLabel("step2");
-        tl.to(camera.position, { duration: 1, x: 20, y: -20, z: 140, ease: "power4"}, "step2")
+        tl.to(camera.position, { duration: 1, x: 0, y: -20, z: 140, ease: "power4"}, "step2")
         tl.to(controls.target, { duration: 1, x: 0, y: -20, z: 0, ease: "power4"}, "step2")
 
         tl.to("nav, .hero", {opacity: 1, duration: 0.2});
