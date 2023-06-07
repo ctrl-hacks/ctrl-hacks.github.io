@@ -4,6 +4,10 @@ import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { gsap } from "gsap";
 
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
+import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
+
 import { addStars } from "./stars";
 import "../index.css"
 
@@ -15,11 +19,12 @@ const DRAW_ANIM_DURATION = 1.5;
 const SCALE_ANIM_DURATION = 1.5;
 
 const PASSIVE_ORBIT_MAX_THETA_X = 20 * (Math.PI / 180);
-const PASSIVE_ORBIT_MAX_THETA_Y = 10 * (Math.PI / 180);
 
 const mapRange = (value, fromMin, fromMax, toMin, toMax) => (value - fromMin) * (toMax - toMin) / (fromMax - fromMin) + toMin;
 
 function main() {
+
+    // Setup Scene, Camera & Controls
 	const canvas = document.querySelector("#c");
 	const renderer = new THREE.WebGLRenderer({ canvas: canvas });
 
@@ -35,6 +40,16 @@ function main() {
     controls.enablePan = false;
     controls.enableRotate = false;
 
+    // Effect Composer
+    const renderScene = new RenderPass(scene, camera);
+    const composer = new EffectComposer(renderer);
+    composer.addPass(renderScene);
+
+    // const glitchPass = new GlitchPass();
+    // composer.addPass(glitchPass);
+
+
+    // Create Text
     const objects = [];
 
     addStars(100, {x: 100, y: 100, z: 100}, scene);
@@ -133,7 +148,7 @@ function main() {
         const tl = gsap.timeline();
 
         // Initial Draw-in
-        tl.to(camera.position, { duration: 3, x: 20, y: 70, z: 80, ease: "power1"})
+        tl.to(camera.position, { duration: 3, x: 10, y: 90, z: 100, ease: "power1"})
         objects.forEach(({ obj, edgeCount }, ndx) => {
             tl.to(obj.material.uniforms.time, { duration: DRAW_ANIM_DURATION, value: edgeCount }, 0)
             tl.to(obj.rotation, {duration: DRAW_ANIM_DURATION, x: -0.3}, 0)
@@ -143,7 +158,8 @@ function main() {
         tl.to(camera.position, { duration: 1, x: 0, y: -20, z: 140, ease: "power4"}, "step2")
         tl.to(controls.target, { duration: 1, x: 0, y: -20, z: 0, ease: "power4"}, "step2")
 
-        tl.to("nav, .hero", {opacity: 1, duration: 0.2});
+        tl.to("nav", {opacity: 1, duration: 0.2});
+        tl.to(".hero", {opacity: 1, duration: 0.2, delay: "-=0.1"});
 
         // Passive Orbit Handler
         document.addEventListener("mousemove", e => {
@@ -171,6 +187,7 @@ function main() {
         }
 
 		renderer.render(scene, camera);
+        composer.render();
 		requestAnimationFrame(render);
 	}
 
