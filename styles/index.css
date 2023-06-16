@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Space+Grotesk:wght@400;700&display=swap");
+
+* {
+	font-family: "Open Sans", sans-serif;
+	color: white;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Why am I using CSS in a tailwind project? If you want to convert 20+ box shadows into tailwind, BE MY GUEST! */
+/* :sob: */
+
+.rainbow-glow, .rainbow-ambient {
+	box-shadow: -20px -6px 15px rgba(45, 15, 233, 0.25),
+		-9px 16px 14px rgba(100, 203, 191, 0.41),
+		14px -15px 31px rgba(238, 241, 101, 0.26),
+		0px -6px 10px rgba(211, 14, 14, 0.25),
+		10px 4px 9px rgba(100, 147, 0, 0.42);
+}
+
+.rainbow-glow:hover {
+	box-shadow: -20px -6px 15px rgba(45, 15, 233, 0.5),
+		-9px 16px 14px rgba(100, 203, 191, 0.6),
+		14px -15px 31px rgba(238, 241, 101, 0.4),
+		0px -6px 10px rgba(211, 14, 14, 0.4),
+		10px 4px 9px rgba(100, 147, 0, 0.7);
+}
+
+.glow {
+	transition: 200ms ease-in-out;
+}
+
+.glow:hover {
+	box-shadow: -20px -6px 15px rgba(45, 15, 233, 0.5),
+		-9px 16px 14px rgba(100, 203, 191, 0.6),
+		14px -15px 31px rgba(238, 241, 101, 0.4),
+		0px -6px 10px rgba(211, 14, 14, 0.4),
+		10px 4px 9px rgba(100, 147, 0, 0.7);
+}

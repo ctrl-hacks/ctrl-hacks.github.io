@@ -2,17 +2,30 @@ import * as THREE from "three";
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
+
+import initAnimation from "./gsap-anims/initAnim";
+import { addStars } from "./background/stars";
+import { drawTextObjects, getTextDrawObjects, undrawTextObjects } from "./effects/draws/textDraw";
+
+import "../styles/index.css"
+import { drawModel, getModelDrawObject } from "./effects/draws/modelDraw";
+import navigation from "./pages/navigation";
 import { gsap } from "gsap";
 
-import { addStars } from "./background/stars";
-import passiveOrbit from "./passiveOrbit/passiveOrbit";
-import { drawObjects, getTextDrawObjects } from "./effects/textDraw/textDraw";
-import "../index.css";
-
 let renderer, camera, controls, scene, canvas;
-let initStarted = false;
 
-let heroText3D, letters;
+const pageObjects = {
+	home: {
+		'heroText3D': undefined,
+		'letters': undefined
+	},
+	about: {
+		'towerModel': undefined,
+		'aboutText3D': undefined,
+		'aboutLetters': undefined
+	},
+	activePage: "home"
+}
 
 function init() {
 	canvas = document.querySelector("#c");
@@ -36,6 +49,9 @@ function init() {
 	const renderScene = new RenderPass(scene, camera);
 	const composer = new EffectComposer(renderer);
 	composer.addPass(renderScene);
+
+	const light = new THREE.AmbientLight( 0x404040, 200 ); // soft white light
+	scene.add( light );
 }
 
 function checkAspectRatio() {
@@ -52,68 +68,54 @@ function checkAspectRatio() {
 	}
 }
 
-function setup() {
+async function setup() {
 	// Add Stars
     addStars(100, { x: 100, y: 100, z: 100 }, scene);
 
     // Create Text
-    const { lettersParent, objects } = getTextDrawObjects("CTRL HACKS '23", 9, {});
-    heroText3D = lettersParent;
-    letters = objects;
+    const { lettersParent, objects } = await getTextDrawObjects("CTRL HACKS '23", 9);
+	pageObjects['home']['heroText3D'] = lettersParent;
+	pageObjects['home']['letters'] = objects;
+	
+    lettersParent.rotation.x = -1.7;
+    scene.add(lettersParent);
 
-    heroText3D.rotation.x = -1.7;
-    scene.add(heroText3D);
+	initAnimation(camera, pageObjects['home']['heroText3D'], pageObjects['home']['letters'], controls);
+
+	//!SECTION AboutPage Objects
+	// Calgary Tower Model
+	const modelPath = import.meta.env.PROD ? '../tower.glb' : "../public/tower.glb";
+	const model = await getModelDrawObject(modelPath); //Path is from modelDraw.js, NOT this file!
+	pageObjects['about']['towerModel'] = model;
+	model.mesh.scale.x = 0.45;
+	model.mesh.scale.y = 0.45;
+	model.mesh.scale.z = 0.45;
+
+	model.mesh.position.set(50, -20, 0);
+	scene.add(model.mesh);
+
+	gsap.to(model.mesh.rotation, { y: 6.28, repeat: -1, ease: "linear", duration: 20 }); // Spin Animation
+
+	// About 3D Title
+	const aboutText3D = await getTextDrawObjects('|ABOUT', 8, { size: 8, height: 2, curveSegments: 4, bevelEnabled: false });
+	pageObjects['about']['aboutText3D'] = aboutText3D.lettersParent;
+	pageObjects['about']['aboutLetters'] = aboutText3D.objects;
+
+	scene.add(aboutText3D.lettersParent);
+	aboutText3D.lettersParent.rotation.x = -0.4;
+	aboutText3D.lettersParent.position.x = -35;
 }
-
-function initAnimation() {
-    const DRAW_ANIM_DURATION = 1.5;
-	const tl = gsap.timeline();
-    
-	// Initial Draw-in
-	tl.to(camera.position, {
-		duration: 3,
-		x: 10,
-		y: 90,
-		z: 100,
-		ease: "power1",
-	});
-
-    tl.to(heroText3D.rotation, { duration: DRAW_ANIM_DURATION, x: -0.3 }, 0);
-    drawObjects(letters, tl, DRAW_ANIM_DURATION);
-    
-
-	tl.addLabel("step2");
-	tl.to(
-		camera.position,
-		{ duration: 1, x: 0, y: -20, z: 140, ease: "power4" },
-		"step2"
-	);
-	tl.to(
-		controls.target,
-		{ duration: 1, x: 0, y: -20, z: 0, ease: "power4" },
-		"step2"
-	);
-
-	tl.to("nav", { opacity: 1, duration: 0.2 });
-	tl.to(".hero", { opacity: 1, duration: 0.2, delay: "-=0.1" });
-
-	setTimeout(() => passiveOrbit(20 * (Math.PI / 180), window.innerWidth, camera), 2700)
-};
 
 function animate() {
 	checkAspectRatio();
     controls.update();
-
-    // Is this a lazy solution? Probably. Do I care? No. Deal with it or solve it yourself. It is like 1am and im going maaaaaaaaaaaaaaaaaaaaaaaaad
-    if(letters.length && !initStarted) {
-        initAnimation(letters);
-        initStarted = true;
-    }
-
 	renderer.render(scene, camera);
 	requestAnimationFrame(animate);
 }
 
+// Credit to https://stackoverflow.com/questions/54986860/animated-wireframe-lines for wireframe effect thing
+
 init();
 setup();
+navigation(pageObjects);
 animate();

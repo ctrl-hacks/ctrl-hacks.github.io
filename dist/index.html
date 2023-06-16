@@ -3,25 +3,143 @@
 	<head>
 		<meta charset="utf-8">
 		<title>CTRL Hacks '23</title>
-		<script type="module" crossorigin src="/assets/index-62cd6903.js"></script>
-		<link rel="stylesheet" href="/assets/index-c65e565f.css">
-	</head>
-	<body>
+
+		<link rel="shortcut icon" href="/assets/favicon-3dde7077.ico" type="image/x-icon">
 		
-		<nav>
-			<img src="data:image/png;base64,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" alt="" class="nav-logo">
-			<div class="nav-links">
-				<p>About</p>
-				<p>Sign Up</p>
+		
+		
+		
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script type="module" crossorigin src="/assets/index-d24aa330.js"></script>
+		<link rel="stylesheet" href="/assets/index-a1736b2e.css">
+	</head>
+	<body class="m-0 p-0 relative -z-10">
+		
+		<nav id="nav" class="flex items-center justify-between absolute w-full opacity-0 invisible">
+			<img id="nav-logo" src="data:image/png;base64,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" alt="" class="w-14 m-6 hover:scale-110 hover:cursor-pointer transition-all">
+			<div class="gap-8 flex">
+				<p id="nav-about" class="font-space-grotesk text-3xl font-bold transition-all hover:scale-[1.15] hover:cursor-pointer">About</p>
+				<p id="nav-signup" class="font-space-grotesk text-3xl font-bold transition-all hover:scale-[1.15] hover:cursor-pointer mr-8">Sign Up</p>
 			</div>
 		</nav>
-		<canvas id="c"></canvas>
-		<main>
-			<div class="hero">
-				<h2>Calgary's upcoming cross-school hackathon for Highschool students.</h2>
-				<button class="rainbow-glow-btn">Sign Up</button>
-				<!-- <p>Sign Up</p> -->
+		
+		<canvas id="c" class="absolute w-screen h-screen -z-10 "></canvas>
+		
+		<section id="home" class="h-screen flex justify-center items-center invisible opacity-0">
+			<div id="hero" class="flex flex-col justify-center items-center gap-2">
+				<h2 class="font-normal text-2xl">Calgary's upcoming cross-school hackathon for high school students!</h2>
+				<div class="flex gap-2 my-2">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 my-auto"> <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" /> </svg>
+					<h3 class="font-space-grotesk text-2xl mt-0">Sept. 21-25, 2023</h3>
+				</div>
+				<button id="signup-btn" class="px-8 py-4 mt-4 font-space-grotesk text-2xl bg-white/[0.18] border-1 border-white/[0.18] rounded-lg backdrop-blur-[0.4px] transition-all hover:cursor-pointer rainbow-glow">SIGN UP</button>
+				<h4 id="success-msg" class="opacity-0 hidden text-xl mt-4 py-4">Thanks for signing up!</h4>
 			</div>
-		</main>
+		</section>
+
+		<section id="about" class="h-screen w-full absolute top-0 -z-10 invisible opacity-0">
+			<div class="absolute top-[35%] w-[40%] left-[15%] z-10">
+				<p class="text-white text-xl">A 
+					<span class="font-bold font-space-grotesk bg-gradient-to-r from-blue-600 to-indigo-400 inline-block text-transparent bg-clip-text">HACKATHON</span> 
+					is a timed event where you build a solution based on a given 
+					<span class="font-bold font-space-grotesk bg-gradient-to-r from-red-500 to-orange-400 inline-block text-transparent bg-clip-text">THEME.</span>
+					CTRL Hacks takes place over 
+					<span class="font-bold font-space-grotesk bg-gradient-to-r from-green-500 to-emerald-600 inline-block text-transparent bg-clip-text">96 HOURS</span>,
+					offering you the chance you level up your coding skills.
+				</p>
+				<h4 class="font-space-grotesk font-bold text-3xl mt-12">FAQs</h4>
+				<div id="FAQs">
+					<div>
+					  <h2 class="mb-0" id="headingOne">
+						<button
+						  class="group relative flex w-full items-center px-5 py-4 [&:not([data-te-collapse-collapsed])]:text-blue-400"
+						  type="button"
+						  data-te-collapse-init
+						  data-te-target="#collapseOne"
+						  aria-expanded="true"
+						  aria-controls="collapseOne">
+						  Are there any Prizes?
+						  <span
+							class="ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+							<svg
+							  xmlns="http://www.w3.org/2000/svg"
+							  fill="none"
+							  viewBox="0 0 24 24"
+							  stroke-width="1.5"
+							  stroke="currentColor"
+							  class="h-6 w-6">
+							  <path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+							</svg>
+						  </span>
+						</button>
+					  </h2>
+					  <div
+						id="collapseOne"
+						class="!visible"
+						data-te-collapse-item
+						data-te-collapse-show
+						aria-labelledby="headingOne"
+						data-te-parent="#FAQs">
+						<div class="pr-5 pl-10 py-4">
+						  Of course! All prizes will be announced closer to the hackathon. Expect a mix of cash and sponsor-provided prizes, with distinct prizes for the top three projects.
+						</div>
+					  </div>
+					</div>
+					<div>
+					  <h2 class="mb-0" id="headingTwo">
+						<button
+						  class="group relative flex w-full items-center px-5 py-4 [&:not([data-te-collapse-collapsed])]:text-blue-400"
+						  type="button"
+						  data-te-collapse-init
+						  data-te-collapse-collapsed
+						  data-te-target="#collapseTwo"
+						  aria-expanded="false"
+						  aria-controls="collapseTwo">
+						  What if I can't code?
+						  <span
+							class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+							<svg
+							  xmlns="http://www.w3.org/2000/svg"
+							  fill="none"
+							  viewBox="0 0 24 24"
+							  stroke-width="1.5"
+							  stroke="currentColor"
+							  class="h-6 w-6">
+							  <path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+							</svg>
+						  </span>
+						</button>
+					  </h2>
+					  <div
+						id="collapseTwo"
+						class="!visible hidden"
+						data-te-collapse-item
+						aria-labelledby="headingTwo"
+						data-te-parent="#FAQs">
+						<div class="pr-5 pl-10 py-4">
+							<p>Fear not! We encourage you to participate, especially if you can't code! There will be non-code prize tracks if you are interested in simply designing a solution, but if you are up to it - a hackathon is the perfect place to learn how to code!</p>
+						</div>
+					  </div>
+					</div>
+				  </div>
+			</div>
+		</section>
+
+		<div id="modal" class="p-8 w-3/5 h-3/5 absolute flex justify-center items-center flex-col gap-4 top-[20%] left-[20%] font-space-grotesk text-2xl bg-white/[0.2] border-1 rounded-xl border-white/[0.6] backdrop-blur-[12px] rainbow-ambient invisible opacity-0">
+			<svg xmlns="http://www.w3.org/2000/svg" id="modalClose" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 absolute top-6 right-6 hover:scale-125 hover:cursor-pointer transition-all"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+			<h2 class="font-space-grotesk font-bold text-5xl mx-auto">SIGN UP TO RECIEVE EMAIL UPDATES</h2>
+			<h4 class="text-center text-xl">Looks like sign up hasn't opened just yet. If you want to be notified when it opens, enter your email below!</h4>
+			<div class="flex gap-2 w-3/5 mt-4 justify-center">
+				<input type="text" id="email-input" placeholder="example@gmail.com" class="rounded-lg text-black p-4 w-full text-center outline-none">
+				<svg id="signup-submit" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 my-auto hover:scale-125 hover:cursor-pointer transition-all"> <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+			</div>
+		</div>		  
 	</body>
 </html>

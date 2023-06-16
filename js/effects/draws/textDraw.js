@@ -1,8 +1,9 @@
 import * as THREE from "three";
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
+import { gsap } from "gsap";
 
-export const getTextDrawObjects = (text, letterOffset) => {
+export const getTextDrawObjects = (text, letterOffset, properties = { size: 10, height: 2, curveSegments: 4, bevelEnabled: false }) => {
     const lettersParent = new THREE.Group();
     const objects = [];
         
@@ -12,10 +13,7 @@ export const getTextDrawObjects = (text, letterOffset) => {
         loader.load(fontPath, (font) => {
             const textGeom = new TextGeometry(letter, {
                 font: font,
-                size: 10,
-                height: 2,
-                curveSegments: 4,
-                bevelEnabled: false,
+                ...properties
             });
     
             {
@@ -79,15 +77,31 @@ export const getTextDrawObjects = (text, letterOffset) => {
         });
     });
 
-    return { lettersParent, objects };
+    return new Promise((resolve, reject) => {
+		const checkVal = () => {
+			if(objects.length === text.length) resolve({ lettersParent, objects });
+			else setTimeout(checkVal, 100);
+		}
+		checkVal();
+	})
 }
 
-export const drawObjects = (objects, tl, duration) => {
+export const drawTextObjects = (objects, duration, tl = undefined, tlPosition = undefined) => {
     objects.forEach(({ mesh, edgeCount, letter }, ndx) => {
-		tl.to(
+		(tl ? tl : gsap).to(...[
 			mesh.material.uniforms.time,
 			{ duration: duration, value: edgeCount },
-			0
-		);
+			tlPosition && tlPosition
+        ]);
+	});
+}
+
+export const undrawTextObjects = (objects, duration, tl = undefined) => {
+    objects.forEach(({ mesh, edgeCount, letter }, ndx) => {
+		(tl ? tl : gsap).to(...[
+			mesh.material.uniforms.time,
+			{ duration: duration, value: 0 },
+            tl && 0
+        ]);
 	});
 }

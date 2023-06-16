@@ -1,13 +1,18 @@
 {
   "dependencies": {
+    "firebase": "^9.22.2",
     "gsap": "^3.11.5",
-    "three": "^0.153.0"
+    "three": "^0.153.0",
+    "tw-elements": "^1.0.0-beta2"
   },
   "scripts": {
     "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2",
     "vite": "^4.3.9"
   }
 }
