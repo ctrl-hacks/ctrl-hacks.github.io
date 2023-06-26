@@ -36,7 +36,7 @@ function initAnimation(camera, heroText3D, letters, controls) {
 	tl.set("#nav, #home", { visibility: "visible" });
 	tl.to("#nav, #home", { opacity: 1, duration: 0.2 });
 
-	setTimeout(() => passiveOrbit(20 * (Math.PI / 180), window.innerWidth, camera), 2700)
+	setTimeout(() => passiveOrbit(20 * (Math.PI / 180), window.innerWidth, camera, controls, 20), 2700)
 };
 
 export default initAnimation;

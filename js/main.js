@@ -41,9 +41,9 @@ function init() {
     controls.update();
 	controls.target = new THREE.Vector3(0, 10, 0);
 
-	controls.enableZoom = true;
-	controls.enablePan = true;
-	controls.enableRotate = true;
+	controls.enableZoom = false;
+	controls.enablePan = false;
+	controls.enableRotate = false;
 
 	// Effect Composer
 	const renderScene = new RenderPass(scene, camera);
