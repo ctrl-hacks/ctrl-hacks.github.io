@@ -13,7 +13,7 @@ const passiveOrbit = (maxThetaX, windowInnerWidth, camera, controls, scrollStart
     });
 
     document.addEventListener("scroll", (e) => {
-        const scrollPos = window.scrollY / 5 + scrollStart;
+        const scrollPos = mapRange(window.scrollY, 0, window.innerHeight, 0, 120) + scrollStart;
         camera.position.y = -scrollPos;
         controls.target.y = -scrollPos;
 

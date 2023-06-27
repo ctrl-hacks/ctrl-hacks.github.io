@@ -39,3 +39,14 @@
 		0px -6px 10px rgba(211, 14, 14, 0.4),
 		10px 4px 9px rgba(100, 147, 0, 0.7);
 }
+
+/* Same thing with scrollbar i cant figure out doing this in tailwind I AM DEFINITELY NOT JUST THAT LAZY AHEM */
+
+body::-webkit-scrollbar {
+	display: none;
+}
+  
+body {
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+}

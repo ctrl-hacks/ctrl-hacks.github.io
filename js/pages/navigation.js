@@ -23,6 +23,7 @@ const handlePageChange = (newPage, pageObjects) => {
             drawModel(pageObjects['about']['towerModel'], 1.25, tl, 1);
             drawTextObjects(pageObjects['about']['aboutLetters'], 1.25, tl, 1);
 
+            tl.set("#about", { display: "block" });
             tl.set("#about", { visibility: "visible" });
             tl.to("#about", { opacity: 1, duration: 0.2 });
         } else if (pageObjects.activePage === "about") {
