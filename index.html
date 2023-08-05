@@ -14,11 +14,11 @@
 	</head>
 	<body class="m-0 p-0 relative -z-10">
 		
-		<nav id="nav" class="flex items-center justify-between absolute w-full opacity-0 invisible">
-			<img id="nav-logo" src="./media/images/logo.png" alt="" class="w-14 m-6 hover:scale-110 hover:cursor-pointer transition-all">
-			<div class="gap-8 flex">
-				<p id="nav-about" class="font-space-grotesk text-3xl font-bold transition-all hover:scale-[1.15] hover:cursor-pointer">About</p>
-				<p id="nav-signup" class="font-space-grotesk text-3xl font-bold transition-all hover:scale-[1.15] hover:cursor-pointer mr-8">Sign Up</p>
+		<nav id="nav" class="flex items-center justify-between absolute w-full opacity-0 invisible md:mt-6 lg:mt-0">
+			<img id="nav-logo" src="./media/images/logo.png" alt="" class="lg:w-14 md:w-28 m-6 hover:scale-110 hover:cursor-pointer transition-all">
+			<div class="gap-8 flex md:mr-3 lg:mr-0">
+				<p id="nav-about" class="font-space-grotesk lg:text-3xl md:text-5xl font-bold transition-all hover:scale-[1.15] hover:cursor-pointer">About</p>
+				<p id="nav-signup" class="font-space-grotesk lg:text-3xl md:text-5xl font-bold transition-all hover:scale-[1.15] hover:cursor-pointer mr-8">Sign Up</p>
 			</div>
 		</nav>
 		
@@ -27,19 +27,19 @@
 		
 		<section id="home" class="h-screen flex flex-col justify-center items-center text-center mx-10 invisible opacity-0">
 			<div id="hero" class="flex flex-col justify-center items-center gap-2 h-2/3">
-				<h2 class="font-normal text-2xl">Calgary's upcoming cross-school hackathon for high school students!</h2>
+				<h2 class="font-normal lg:text-2xl md:text-[2.6rem] md:w-[90%] lg:w-auto">Calgary's upcoming cross-school hackathon for high school students!</h2>
 				<div class="flex gap-2 my-2">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 my-auto"> <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" /> </svg>
-					<h3 class="font-space-grotesk text-2xl mt-0">Sept. 21-25, 2023</h3>
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="lg:w-8 lg:h-8 md:w-12 md:h-12 my-auto"> <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" /> </svg>
+					<h3 class="font-space-grotesk lg:text-2xl md:text-[2.6rem] mt-0">Sept. 21-25, 2023</h3>
 				</div>
-				<button id="signup-btn" class="px-8 py-4 mt-4 font-space-grotesk text-2xl bg-white/[0.18] border-1 border-white/[0.18] rounded-lg backdrop-blur-[0.4px] transition-all hover:cursor-pointer rainbow-glow">SIGN UP</button>
+				<button id="signup-btn" class="lg:px-8 lg:py-4 md:px-14 md:py-9 lg:mt-4 md:mt-8 font-space-grotesk lg:text-2xl md:text-5xl bg-white/[0.18] border-1 border-white/[0.18] rounded-lg backdrop-blur-[0.4px] transition-all hover:cursor-pointer rainbow-glow">SIGN UP</button>
 				<h4 id="success-msg" class="opacity-0 hidden text-xl mt-4 py-4">Thanks for signing up!</h4>
 			</div>
 		</section>
 
 		<section id="about" class="h-screen w-full absolute top-0 -z-10 hidden opacity-0">
-			<div class="absolute top-[35%] w-[40%] left-[15%] z-10">
-				<p class="text-white text-xl">A 
+			<div class="absolute top-[35%] lg:w-[40%] lg:left-[15%] md:w-[80%] md:left-[10%] z-10 ">
+				<p class="text-white lg:text-xl lg:text-left md:text-[2.6rem] md:text-center">A 
 					<span class="font-bold font-space-grotesk bg-gradient-to-r from-blue-600 to-indigo-400 inline-block text-transparent bg-clip-text">HACKATHON</span> 
 					is a timed event where you build a solution based on a given 
 					<span class="font-bold font-space-grotesk bg-gradient-to-r from-red-500 to-orange-400 inline-block text-transparent bg-clip-text">THEME.</span>
@@ -49,8 +49,8 @@
 					<br><br>
 					For more info, visit out <a href="https://ctrl-hacks.devpost.com/" target="_blank" class="text-blue-500 underline">Devpost</a>, where the hackathon will take place.
 				</p>
-				<h4 class="font-space-grotesk font-bold text-3xl mt-12">FAQs</h4>
-				<div id="FAQs" class="mb-12">
+				<h4 class="font-space-grotesk font-bold lg:text-3xl md:text-7xl mt-12">FAQs</h4>
+				<div id="FAQs" class="mb-12 lg:text-base md:text-[2.2rem]">
 					<div>
 					  <h2 class="mb-0" id="headingOne">
 						<button
@@ -69,7 +69,7 @@
 							  viewBox="0 0 24 24"
 							  stroke-width="1.5"
 							  stroke="currentColor"
-							  class="h-6 w-6">
+							  class="lg:h-6 lg:w-6 md:h-9 md:w-9">
 							  <path
 								stroke-linecap="round"
 								stroke-linejoin="round"
@@ -110,7 +110,7 @@
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
 								stroke="currentColor"
-								class="h-6 w-6">
+								class="lg:h-6 lg:w-6 md:h-9 md:w-9">
 								<path
 								  stroke-linecap="round"
 								  stroke-linejoin="round"
@@ -150,7 +150,7 @@
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
 								stroke="currentColor"
-								class="h-6 w-6">
+								class="lg:h-6 lg:w-6 md:h-9 md:w-9">
 								<path
 								  stroke-linecap="round"
 								  stroke-linejoin="round"
@@ -190,7 +190,7 @@
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
 								stroke="currentColor"
-								class="h-6 w-6">
+								class="lg:h-6 lg:w-6 md:h-9 md:w-9">
 								<path
 								  stroke-linecap="round"
 								  stroke-linejoin="round"
@@ -214,14 +214,18 @@
 			</div>
 		</section>
 
-		<div id="modal" class="p-8 w-3/5 h-3/5 absolute flex justify-center items-center flex-col gap-4 top-[20%] left-[20%] font-space-grotesk text-2xl bg-white/[0.2] border-1 rounded-xl border-white/[0.6] backdrop-blur-[12px] rainbow-ambient invisible opacity-0">
+		<div id="modal" class="p-8 lg:w-3/5 lg:h-3/5 md:w-4/5 md:h-2/5 absolute flex justify-center items-center flex-col lg:gap-4 md:gap-8 lg:top-[20%] lg:left-[20%] md:top-[30%] md:left-[10%] font-space-grotesk text-2xl bg-white/[0.2] border-1 rounded-xl border-white/[0.6] backdrop-blur-[12px] rainbow-ambient invisible opacity-0">
 			<svg xmlns="http://www.w3.org/2000/svg" id="modalClose" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 absolute top-6 right-6 hover:scale-125 hover:cursor-pointer transition-all"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-			<h2 class="font-space-grotesk font-bold text-5xl mx-auto">SIGN UP ON OUR DEVPOST!</h2>
-			<h4 class="text-center text-xl">Sign up is now open on our <a class="tex text-blue-400 underline" href="https://ctrl-hacks.devpost.com/" target="_blank">devpost</a>! Register there to stay notified.</h4>
+			<h2 class="font-space-grotesk font-bold lg:text-5xl md:text-8xl w-full text-center">SIGN UP ON OUR DEVPOST!</h2>
+			<h4 class="text-center lg:text-xl md:text-[2.6rem] leading-normal">Sign up is now open on our <a class="tex text-blue-400 underline" href="https://ctrl-hacks.devpost.com/" target="_blank">devpost</a>! Register there to stay notified.</h4>
 			<!-- <div class="flex gap-2 w-3/5 mt-4 justify-center">
 				<input type="text" id="email-input" placeholder="example@gmail.com" class="rounded-lg text-black p-4 w-full text-center outline-none">
 				<svg id="signup-submit" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 my-auto hover:scale-125 hover:cursor-pointer transition-all"> <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
 			</div> -->
-		</div>		  
+		</div>
+		
+		<div id="mobileAlert" class="absolute w-[80%] left-[10%] bottom-[15%] bg-green-400 text-3xl text-center rounded-lg opacity-0">			
+			<h4 class="p-8 text-black lg:text-3xl md:text-4xl">Look's like you're viewing this page on mobile. For the best viewing experience, try taking a look on a wider screen!</h4>
+		</div>
 	</body>
 </html>

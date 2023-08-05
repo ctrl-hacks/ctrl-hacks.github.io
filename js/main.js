@@ -104,6 +104,13 @@ async function setup() {
 	scene.add(aboutText3D.lettersParent);
 	aboutText3D.lettersParent.rotation.x = -0.4;
 	aboutText3D.lettersParent.position.x = -35;
+
+	// Mobile Alert
+	if(window.innerWidth <= 1024) {
+		const alert = document.getElementById("mobileAlert");
+		gsap.to("#mobileAlert", { opacity: 1 });
+		gsap.to("#mobileAlert", { opacity: 0, delay: 10 });
+	}
 }
 
 function animate() {
