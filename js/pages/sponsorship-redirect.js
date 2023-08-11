@@ -1,1 +1,0 @@
-window.location.href = "https://drive.google.com/file/d/1Z4SN-OoKrz9vaTY4-sZvvd8GX4SPkAvt/view?usp=sharing";
