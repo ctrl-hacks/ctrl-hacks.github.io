@@ -1,5 +1,13 @@
-// if uploading to a subdomain it is ok to no specify any dir:
-export default {
-    base: '/',
-    'sponsorship-package': '/sponsorship-package.html'
-}
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        'sponsorship-package': resolve(__dirname, 'sponsorship-package.html'),
+      },
+    },
+  },
+})
