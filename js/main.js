@@ -109,6 +109,7 @@ async function setup() {
 	if(window.innerWidth <= 1024) {
 		const alert = document.getElementById("mobileAlert");
 		gsap.to("#mobileAlert", { opacity: 1 });
+		gsap.set("#mobileAlert", { visibility: "visible" });
 		gsap.to("#mobileAlert", { opacity: 0, delay: 10 });
 	}
 }
