@@ -13,6 +13,7 @@ import navigation from "./pages/navigation";
 import { gsap } from "gsap";
 
 let renderer, camera, controls, scene, canvas;
+let isMobileDevice = false;
 
 const pageObjects = {
 	home: {
@@ -72,15 +73,29 @@ async function setup() {
 	// Add Stars
     addStars(100, { x: 100, y: 100, z: 100 }, scene);
 
+	// Mobile Alert
+	if(window.innerWidth <= 1024) {
+
+		isMobileDevice = true;
+
+		const alert = document.getElementById("mobileAlert");
+		gsap.to("#mobileAlert", { opacity: 1 });
+		gsap.set("#mobileAlert", { visibility: "visible" });
+		gsap.to("#mobileAlert", { opacity: 0, delay: 10 });
+	}
+
+	const mobileTextOptions = { size: 3, height: 0.5, curveSegments: 4, bevelEnabled: false };
+	const desktopTextOptions = { size: 10, height: 2, curveSegments: 4, bevelEnabled: false };
+
     // Create Text
-    const { lettersParent, objects } = await getTextDrawObjects("CTRL HACKS '23", 9);
+    const { lettersParent, objects } = await getTextDrawObjects("CTRL HACKS '23", isMobileDevice ? 3 : 9, isMobileDevice ? mobileTextOptions : desktopTextOptions);
 	pageObjects['home']['heroText3D'] = lettersParent;
 	pageObjects['home']['letters'] = objects;
 	
     lettersParent.rotation.x = -1.7;
     scene.add(lettersParent);
 
-	initAnimation(camera, pageObjects['home']['heroText3D'], pageObjects['home']['letters'], controls);
+	initAnimation(camera, pageObjects['home']['heroText3D'], pageObjects['home']['letters'], controls, isMobileDevice);
 
 	//!SECTION AboutPage Objects
 	// Calgary Tower Model
@@ -91,7 +106,7 @@ async function setup() {
 	model.mesh.scale.y = 0.45;
 	model.mesh.scale.z = 0.45;
 
-	model.mesh.position.set(50, -20, 0);
+	model.mesh.position.set(50, isMobileDevice ? 0 : -20, 0);
 	scene.add(model.mesh);
 
 	gsap.to(model.mesh.rotation, { y: 6.28, repeat: -1, ease: "linear", duration: 20 }); // Spin Animation
@@ -104,14 +119,6 @@ async function setup() {
 	scene.add(aboutText3D.lettersParent);
 	aboutText3D.lettersParent.rotation.x = -0.4;
 	aboutText3D.lettersParent.position.x = -35;
-
-	// Mobile Alert
-	if(window.innerWidth <= 1024) {
-		const alert = document.getElementById("mobileAlert");
-		gsap.to("#mobileAlert", { opacity: 1 });
-		gsap.set("#mobileAlert", { visibility: "visible" });
-		gsap.to("#mobileAlert", { opacity: 0, delay: 10 });
-	}
 }
 
 function animate() {
