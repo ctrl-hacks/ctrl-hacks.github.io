@@ -102,23 +102,26 @@ async function setup() {
 	const modelPath = import.meta.env.PROD ? '../tower.glb' : "../public/tower.glb";
 	const model = await getModelDrawObject(modelPath); //Path is from modelDraw.js, NOT this file!
 	pageObjects['about']['towerModel'] = model;
-	model.mesh.scale.x = 0.45;
-	model.mesh.scale.y = 0.45;
-	model.mesh.scale.z = 0.45;
+	model.mesh.scale.x = isMobileDevice ? 0.25 : 0.45;
+	model.mesh.scale.y = isMobileDevice ? 0.25 : 0.45;
+	model.mesh.scale.z = isMobileDevice ? 0.25 : 0.45;
 
-	model.mesh.position.set(50, isMobileDevice ? 0 : -20, 0);
+	model.mesh.position.set(isMobileDevice ? 25 : 50, isMobileDevice ? -50 : -20, 0);
 	scene.add(model.mesh);
 
 	gsap.to(model.mesh.rotation, { y: 6.28, repeat: -1, ease: "linear", duration: 20 }); // Spin Animation
 
+
+	const aboutTextOptions = { size: isMobileDevice ? 6 : 8, height: isMobileDevice ? 1.25 : 2, curveSegments: 4, bevelEnabled: false };
+
 	// About 3D Title
-	const aboutText3D = await getTextDrawObjects('|ABOUT', 8, { size: 8, height: 2, curveSegments: 4, bevelEnabled: false });
+	const aboutText3D = await getTextDrawObjects('|ABOUT', isMobileDevice ? 6 : 8, aboutTextOptions);
 	pageObjects['about']['aboutText3D'] = aboutText3D.lettersParent;
 	pageObjects['about']['aboutLetters'] = aboutText3D.objects;
 
 	scene.add(aboutText3D.lettersParent);
 	aboutText3D.lettersParent.rotation.x = -0.4;
-	aboutText3D.lettersParent.position.x = -35;
+	aboutText3D.lettersParent.position.x = isMobileDevice ? 0 : -35;
 }
 
 function animate() {
