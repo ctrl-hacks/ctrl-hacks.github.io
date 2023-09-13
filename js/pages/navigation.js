@@ -7,7 +7,7 @@ let pageIsChanging = false;
 const handlePageChange = (newPage, pageObjects) => {
     if(!pageIsChanging) {
         pageIsChanging = true;
-        setTimeout(() => { pageIsChanging = false }, 0.6);
+        setTimeout(() => { pageIsChanging = false }, 2000);
 
         // Hide Current Page
         gsap.to(`#${pageObjects.activePage}`, { opacity: 0, duration: 0.2 });
@@ -50,7 +50,7 @@ const navigation = (pageObjects) => {
 
     $("#nav-logo").click(() => { 
         if(pageObjects.activePage !== "home") handlePageChange("home", pageObjects);
-        console.log(pageObjects)
+        // console.log(pageObjects)
     });
 
 }
